@@ -1,12 +1,57 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:weather_app_bloc/bloc/weather_bloc_bloc.dart';
-import 'package:weather_app_bloc/get_weater_img.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+Widget getWeatherIcon(int code) {
+  switch (code) {
+    case >= 200 && <300:
+      return Image.asset(
+        'assets/1.png',
+      );
+    case>=300&&<400:
+     return Image.asset(
+        'assets/2.png',
+      );
+      case>=500&&<600:
+     return Image.asset(
+        'assets/3.png',
+      );
+      case>=600&&<700:
+     return Image.asset(
+        'assets/4.png',
+      );
+        case>=700&&<800:
+     return Image.asset(
+        'assets/5.png',
+      );
+          case==800:
+     return Image.asset(
+        'assets/6.png',
+      );
+           case>=800&&<=804:
+     return Image.asset(
+        'assets/7.png',
+      );
+      default:
+      return Image.asset(
+        'assets/8.png',
+      );
+      
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +76,7 @@ class Home extends StatelessWidget {
                   height: 300,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.deepPurple,
+                    color: Colors.green,
                   ),
                 ),
               ),
@@ -39,7 +84,7 @@ class Home extends StatelessWidget {
                 alignment: const AlignmentDirectional(-3, -0.2),
                 child: Container(
                   width: 300,
-                  height: 350,
+                  height: 300,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.green,
@@ -246,7 +291,11 @@ class Home extends StatelessWidget {
                       ),
                     );
                   } else {
-                    return Container();
+                    return  SizedBox(
+                      height: double.infinity,
+                      width: double.infinity,
+                      child: Center(child:Lottie.asset('assets/Animation - 1717825138466.json') ),
+                    );
                   }
                 },
               )

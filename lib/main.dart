@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app_bloc/bloc/weather_bloc_bloc.dart';
 import 'package:weather_app_bloc/screens/home.dart';
+import 'package:weather_app_bloc/screens/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,8 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(),
+      theme: ThemeData(
+        fontFamily: GoogleFonts.montserrat().fontFamily,
+      ),
       home: FutureBuilder(
         future: _determinePosition(),
         builder: (context, snap) {
@@ -32,11 +35,7 @@ class MyApp extends StatelessWidget {
               child: const Home(),
             );
           } else {
-            return const Scaffold(
-              body: Center(
-                child: CupertinoActivityIndicator(),
-              ),
-            );
+            return const Splash();
           }
         },
       ),

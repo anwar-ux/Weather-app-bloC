@@ -6,7 +6,7 @@ import 'package:weather/weather.dart';
 part 'weather_bloc_event.dart';
 part 'weather_bloc_state.dart';
 
-String apiKey = "2c905c7d85f4b25cb80019995ec48bee";
+String apiKey = '2c905c7d85f4b25cb80019995ec48bee';
 
 class WeatherBlocBloc extends Bloc<WeatherBlocEvent, WeatherBlocState> {
   WeatherBlocBloc() : super(WeatherBlocInitial()) {
